@@ -30,7 +30,7 @@ speedFromLocation = lambda location: keplersThird(earthRadius(location.latitude.
 
 printOutput = lambda txt: print("{:.4f}".format(txt), file = open("result.txt", "w"))
 
-def mainProgram(): # Main program, runs for max than 10 minutes, does the arithmetic mean of the speeds
+def mainProgram(): # Main program, runs for max than 10 minutes, computes the arithmetic mean of the speeds
     
     mean = 0.0
     tenMinutes = 10 * 60
@@ -38,9 +38,9 @@ def mainProgram(): # Main program, runs for max than 10 minutes, does the arithm
     
     for i in range(1, 39):        
         location = dummyISS.coordinates
+        mean += speedFromLocation(location)        
         if((datetime.now() - startTime).seconds > tenMinutes): 
             break 
-        mean += speedFromLocation(location)        
         sleep(.15)
     
     mean /= i 
